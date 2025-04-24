@@ -47,3 +47,87 @@ body::before {
   justify-content: center;
   align-items: center;
 }
+
+/* Overlay (background behind the modal) */
+.popup-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  z-index: 1000; /* Ensures it stays on top */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* When modal is shown */
+.popup-overlay.show {
+  display: flex;
+}
+
+/* Fade-in animation for modal overlay */
+.popup-overlay.animate-in {
+  animation: fadeIn 0.3s forwards;
+}
+
+/* Fade-out animation for modal overlay */
+.popup-overlay.animate-out {
+  animation: fadeOut 0.3s forwards;
+}
+
+/* Modal content */
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: popupIn 0.3s forwards;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes popupIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
