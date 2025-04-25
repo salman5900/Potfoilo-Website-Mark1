@@ -6,40 +6,74 @@ var typed = new Typed(".dynamic", {
 });
 
 // Popup functionality
-// Select all buttons that open the popup
-const openBtns = document.querySelectorAll(".openPopup");
-// Select all modals
-const popups = document.querySelectorAll(".popupModal");
-// Select all close buttons
-const closeBtns = document.querySelectorAll(".closePopup");
+// vitual coloumn popup
+/// Get DOM elements
+const openBtn = document.getElementById("openPopup");
+const closeBtn = document.getElementById("closePopup");
+const modal = document.getElementById("popupModal");
 
-// Function to open the modal
-openBtns.forEach((button) => {
-  button.addEventListener("mousedown", (e) => {
-    e.preventDefault(); // Prevent the default action to avoid flicker
-    // Get the modal id from the data-target attribute
-    const modalId = button.getAttribute("data-target");
-    const targetModal = document.querySelector(modalId);
-
-    // Ensure the modal is displayed immediately
-    targetModal.classList.add("show");
-  });
+// Open modal
+openBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // Prevent default action of the button
+  modal.style.display = "flex"; // Use flex to center content
 });
 
-// Function to close the modal
-closeBtns.forEach((button) => {
-  button.addEventListener("click", () => {
-    const popup = button.closest(".popupModal");
-    popup.classList.remove("show");
-  });
+// Close modal
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
 });
 
-// Close the modal when clicking outside
+// Optional: Close on outside click
 window.addEventListener("click", (e) => {
-  popups.forEach((popup) => {
-    if (e.target === popup) {
-      // Close the modal if the background is clicked
-      popup.classList.remove("show");
-    }
-  });
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+// hybrid popup
+// Get new DOM elements
+const openPopup2 = document.getElementById("openPopup2");
+const closePopup2 = document.getElementById("closePopup2");
+const popupModal2 = document.getElementById("popupModal2");
+
+// Open the modal
+openPopup2.addEventListener("click", (e) => {
+  e.preventDefault();
+  popupModal2.style.display = "flex";
+});
+
+// Close the modal
+closePopup2.addEventListener("click", () => {
+  popupModal2.style.display = "none";
+});
+
+// Optional: Click outside to close
+window.addEventListener("click", (e) => {
+  if (e.target === popupModal2) {
+    popupModal2.style.display = "none";
+  }
+});
+
+// inPerson popup
+// Get DOM elements for popup 3
+const openPopup3 = document.getElementById("openPopup3");
+const closePopup3 = document.getElementById("closePopup3");
+const popupModal3 = document.getElementById("popupModal3");
+
+// Open popup 3
+openPopup3.addEventListener("click", (e) => {
+  e.preventDefault();
+  popupModal3.style.display = "flex";
+});
+
+// Close popup 3
+closePopup3.addEventListener("click", () => {
+  popupModal3.style.display = "none";
+});
+
+// Close on outside click for popup 3
+window.addEventListener("click", (e) => {
+  if (e.target === popupModal3) {
+    popupModal3.style.display = "none";
+  }
 });
