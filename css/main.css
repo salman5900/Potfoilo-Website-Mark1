@@ -44,6 +44,19 @@ body::before {
   z-index: 999;
   justify-content: center;
   align-items: center;
+
+  /* Added animation styles */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When popup is visible */
+.popup-overlay.show,
+.popup-overlay-2.show,
+.popup-overlay-3.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Popup content box */
